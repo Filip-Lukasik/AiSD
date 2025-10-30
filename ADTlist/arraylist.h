@@ -89,7 +89,7 @@ public:
 		tab[i] = tab[i-1];
 	}
 	tab[0] = item;
-	item = 0;
+	item = T();
 	last++;
     }
     void push_back(const T& item){ // dodanie na koniec
@@ -100,7 +100,7 @@ public:
     void push_back(T&& item){ // dodanie na koniec NIEOBOWIAZKOWE
     	assert(!full());
     	tab[last] = item;
-	item = 0;
+	item = T();
 	last++;
     }
     T& front(){assert(!empty());return tab[0];} // zwraca poczatek, nie usuwa, error dla pustej listy
@@ -111,17 +111,17 @@ public:
 		tab[i-1] = tab[i];
 	}
 	last--;
-	tab[last] = 0;
+	tab[last] = T();
     }
     void pop_back(){ // usuwa koniec, error dla pustej listy
     	assert(!empty());
 	last--;
-	tab[last] = 0;
+	tab[last] = T();
     }
     void clear(){ // czyszczenie listy z elementow
     	while(!empty()){
 		last--;
-		tab[last] = 0;
+		tab[last] = T();
 	}
     }
     void display(){ // lepiej zdefiniowac operator<<
@@ -192,7 +192,7 @@ public:
 	for(;pos<last;pos++){
 		tab[pos] = tab[pos+1];
 	}
-	tab[pos] =0;
+	tab[pos] =T();
 
     }
     int index(const T& item){ // jaki index na liscie (-1 gdy nie ma)
@@ -220,7 +220,7 @@ public:
 	}
 	tab[pos] = item;
 	last++;
-	item = 0;
+	item = T();
     }
     // Jezeli pos=0, to wstawiamy na poczatek.
     // Jezeli pos=size(), to wstawiamy na koniec.
