@@ -29,20 +29,20 @@ public:
 	    nil->prev=nil;
     }
     ~DoubleList(){ // tu trzeba wyczyscic wezly
-    	DoubleNode<T> *node = nil->next;
-	while(node!=nil){
-		node = node->next;
-		delete node->prev;
-	}
-	delete nil;
+		DoubleNode<T> *node = nil->next;
+		while(node!=nil){
+			node = node->next;
+			delete node->prev;
+		}
+		delete nil;
     }
     DoubleList(const DoubleList& other) : DoubleList(){ // copy constructor
-	DoubleNode<T> *node;
-	for(DoubleNode<T> *current = other.nil->next ; current != other.nil ; current = current->next){
-		node = new DoubleNode<T>(current->value,nil,nil->prev);
-		nil->prev->next = node;
-		nil->prev = node;
-	}
+		DoubleNode<T> *node;
+		for(DoubleNode<T> *current = other.nil->next ; current != other.nil ; current = current->next){
+			node = new DoubleNode<T>(current->value,nil,nil->prev);
+			nil->prev->next = node;
+			nil->prev = node;
+		}
     }
     // usage:   DoubleList<int> list2(list1);
 
@@ -50,15 +50,15 @@ public:
     // usage:   DoubleList<int> list2(std::move(list1));
 
     DoubleList& operator=(const DoubleList& other){ // copy assignment operator, return *this
-    	if(this==&other){return *this;}
-	this->clear();
-	DoubleNode<T> *node;
-	for(DoubleNode<T> *current = other.nil->next ; current != other.nil ; current = current->next){
-		node = new DoubleNode<T>(current->value,nil,nil->prev);
-		nil->prev->next = node;
-		nil->prev = node;
-	}
-	return *this;
+		if(this==&other){return *this;}
+		this->clear();
+		DoubleNode<T> *node;
+		for(DoubleNode<T> *current = other.nil->next ; current != other.nil ; current = current->next){
+			node = new DoubleNode<T>(current->value,nil,nil->prev);
+			nil->prev->next = node;
+			nil->prev = node;
+		}
+		return *this;
     }
     // usage:   list2 = list1;
 
@@ -67,23 +67,23 @@ public:
 
     bool empty() const { return nil->next == nil; }
     std::size_t size() const{
-    	std::size_t size = 0;
-	for(DoubleNode<T> *node = nil->next ; node != nil ; node = node->next){
-		size++;
-	}
-	return size;
+		std::size_t size = 0;
+		for(DoubleNode<T> *node = nil->next ; node != nil ; node = node->next){
+			size++;
+		}
+		return size;
     } // O(n) bo trzeba policzyc
     void push_front(const T& item); // O(1)
     void push_front(T&& item); // O(1) NIEOBOWIAZKOWE
     void push_back(const T& item){
-	DoubleNode<T> *node = new DoubleNode<T>(item,nil,nil->prev);
-	nil->prev->next = node;
-	nil->prev = node;
+		DoubleNode<T> *node = new DoubleNode<T>(item,nil,nil->prev);
+		nil->prev->next = node;
+		nil->prev = node;
     } // O(1)
     void push_back(T&& item){
-	DoubleNode<T> *node = new DoubleNode<T>(std::move(item),nil,nil->prev);
-	nil->prev->next = node;
-	nil->prev = node;	
+		DoubleNode<T> *node = new DoubleNode<T>(std::move(item),nil,nil->prev);
+		nil->prev->next = node;
+		nil->prev = node;	
     } // O(1) NIEOBOWIAZKOWE
     T& front() const { return nil->next->value; } // zwraca poczatek, nie usuwa
     T& back() const { return nil->prev->value; } // zwraca koniec, nie usuwa
@@ -93,32 +93,32 @@ public:
     	DoubleNode<T> *node = nil->prev;
     	node->next->prev = node->prev;
     	node->prev->next = node->next;
-	delete node;
+    	delete node;
     }
     void clear(){ // czyszczenie listy z elementow O(n)
-    	DoubleNode<T> *node = nil->next;
-	while(node!=nil){
-		node = node->next;
-		delete node->prev;
-	}
-	nil->next = nil;
-	nil->prev = nil;
+		DoubleNode<T> *node = nil->next;
+		while(node!=nil){
+			node = node->next;
+			delete node->prev;
+		}
+		nil->next = nil;
+		nil->prev = nil;
     }
     void display(){ // O(n)
     	DoubleNode<T> *node = nil->next;
-	while(node!=nil){
+    	while(node!=nil){
     		std::cout << node->value;
-		node = node->next;
-	}
-	std::cout << std::endl;	
+    		node = node->next;
+    	}
+    	std::cout << std::endl;	
     }
     void display_reversed(){
     	DoubleNode<T> *node = nil->prev;
-	while(node!=nil){
+    	while(node!=nil){
     		std::cout << node->value;
-		node = node->prev;
-	}
-	std::cout << std::endl;	
+    		node = node->prev;
+    	}
+    	std::cout << std::endl;	
     } // O(n)
 
     // Operacje z indeksami. NIEOBOWIAZKOWE
