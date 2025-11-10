@@ -25,21 +25,21 @@ class DoubleList {
 public:
     DoubleList(){
 	    nil = new DoubleNode<T>();
-	    nil->next=nil;
-	    nil->prev=nil;
+	    nil->next = nil;
+	    nil->prev = nil;
     }
     ~DoubleList(){ // tu trzeba wyczyscic wezly
 		DoubleNode<T> *node = nil->next;
-		while(node!=nil){
+		while(node != nil){
 			node = node->next;
 			delete node->prev;
 		}
 		delete nil;
     }
-    DoubleList(const DoubleList& other) : DoubleList(){ // copy constructor
+    DoubleList(const DoubleList& other) : DoubleList() { // copy constructor
 		DoubleNode<T> *node;
 		for(DoubleNode<T> *current = other.nil->next ; current != other.nil ; current = current->next){
-			node = new DoubleNode<T>(current->value,nil,nil->prev);
+			node = new DoubleNode<T>(current->value , nil , nil->prev);
 			nil->prev->next = node;
 			nil->prev = node;
 		}
@@ -50,11 +50,11 @@ public:
     // usage:   DoubleList<int> list2(std::move(list1));
 
     DoubleList& operator=(const DoubleList& other){ // copy assignment operator, return *this
-		if(this==&other){return *this;}
+		if(this == &other){return *this;}
 		this->clear();
 		DoubleNode<T> *node;
 		for(DoubleNode<T> *current = other.nil->next ; current != other.nil ; current = current->next){
-			node = new DoubleNode<T>(current->value,nil,nil->prev);
+			node = new DoubleNode<T>(current->value , nil , nil->prev);
 			nil->prev->next = node;
 			nil->prev = node;
 		}
@@ -76,12 +76,12 @@ public:
     void push_front(const T& item); // O(1)
     void push_front(T&& item); // O(1) NIEOBOWIAZKOWE
     void push_back(const T& item){
-		DoubleNode<T> *node = new DoubleNode<T>(item,nil,nil->prev);
+		DoubleNode<T> *node = new DoubleNode<T>(item , nil , nil->prev);
 		nil->prev->next = node;
 		nil->prev = node;
     } // O(1)
     void push_back(T&& item){
-		DoubleNode<T> *node = new DoubleNode<T>(std::move(item),nil,nil->prev);
+		DoubleNode<T> *node = new DoubleNode<T>(std::move(item) , nil , nil->prev);
 		nil->prev->next = node;
 		nil->prev = node;	
     } // O(1) NIEOBOWIAZKOWE
@@ -97,7 +97,7 @@ public:
     }
     void clear(){ // czyszczenie listy z elementow O(n)
 		DoubleNode<T> *node = nil->next;
-		while(node!=nil){
+		while(node != nil){
 			node = node->next;
 			delete node->prev;
 		}
@@ -106,7 +106,7 @@ public:
     }
     void display(){ // O(n)
     	DoubleNode<T> *node = nil->next;
-    	while(node!=nil){
+    	while(node != nil){
     		std::cout << node->value;
     		node = node->next;
     	}
@@ -114,7 +114,7 @@ public:
     }
     void display_reversed(){
     	DoubleNode<T> *node = nil->prev;
-    	while(node!=nil){
+    	while(node != nil){
     		std::cout << node->value;
     		node = node->prev;
     	}
@@ -134,14 +134,14 @@ public:
 
 template <typename T>
 void DoubleList<T>::push_front(const T& item){
-	DoubleNode<T> *node = new DoubleNode<T>(item, nil->next,nil);
+	DoubleNode<T> *node = new DoubleNode<T>(item , nil->next , nil);
 	node->next->prev = node;
 	nil->next = node;
 }
 
 template <typename T>
 void DoubleList<T>::push_front(T&& item){
-	DoubleNode<T> *node = new DoubleNode<T>(std::move(item), nil->next,nil);
+	DoubleNode<T> *node = new DoubleNode<T>(std::move(item) , nil->next , nil);
 	node->next->prev = node;
 	nil->next = node;
 }
