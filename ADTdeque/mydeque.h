@@ -88,7 +88,7 @@ public:
     }
     // Operacje z indeksami. NIEOBOWIĄZKOWE
     T& operator[](std::size_t pos){ // podstawienie L[pos]=item, odczyt L[pos]
-    	assert( !empty() );
+    	assert( pos < size() );
     	return tab[(head + pos) % msize];
     }
     const T& operator[](std::size_t pos) const; // dostęp do obiektu const
