@@ -20,9 +20,9 @@ public:
     ~MyQueue() { delete [] tab; }
     MyQueue(const MyQueue& other){ // copy constructor
     	msize = other.msize;
-	head = other.head;
-	tail = other.tail;
-	tab = new T[msize];
+    	head = other.head;
+    	tail = other.tail;
+    	tab = new T[msize];
     	assert ( tab != nullptr);
     	for(std::size_t el = head ; el != tail ; el = (el + 1) % msize){
     		tab[el] = other.tab[el];
@@ -30,12 +30,12 @@ public:
     }
     MyQueue(MyQueue&& other){ // move constructor
     	msize = other.msize;
-	head = other.head;
-	tail = other.tail;
-	tab = other.tab;
-	other.tail = other.head = 0;
-	other.msize = 1;
-	other.tab = nullptr;
+    	head = other.head;
+    	tail = other.tail;
+    	tab = other.tab;
+    	other.tail = other.head = 0;
+    	other.msize = 1;
+    	other.tab = nullptr;
     }
     // UWAGA Po przeniesieniu other.msize = 1, other.head = other.tail = 0.
     MyQueue& operator=(const MyQueue& other){ // copy assignment operator, return *this
@@ -54,13 +54,13 @@ public:
     MyQueue& operator=(MyQueue&& other){ // move assignment operator, return *this
     	if(this == &other){ return *this; }
     	delete [] tab;
-	msize = other.msize;
+     	msize = other.msize;
     	head = other.head;
-	tail = other.tail;
-	tab = other.tab;
-	other.tail = other.head = 0;
-	other.msize = 1;
-	other.tab = nullptr;
+    	tail = other.tail;
+    	tab = other.tab;
+    	other.tail = other.head = 0;
+    	other.msize = 1;
+    	other.tab = nullptr;
     	return *this;
     }
     // UWAGA Po przeniesieniu other.msize = 1, other.head = other.tail = 0.
@@ -96,6 +96,6 @@ public:
         	std::cout << tab[i] << " ";
     	}
     	std::cout << std::endl;
-    	}
+    }
 };
 #endif
