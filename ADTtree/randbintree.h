@@ -100,13 +100,12 @@ int RandomBinaryTree<T>::iter_calc_height() {
 	if(root == nullptr){ return 0; }
 	std::stack<BSTNode<T> *> s1;
 	std::stack<BSTNode<T> *> s2;
-	BSTNode<T> * cur;
+	BSTNode<T> *cur;
 	int height = 0;
-	bool process_s1 = true;
 	s1.push(root);
 	while( !s1.empty() || !s2.empty() ){
 		height++;
-		if(process_s1){
+		if( !s1.empty() ){
 			while( !s1.empty() ){
 				cur = s1.top();
 				s1.pop();
@@ -117,7 +116,6 @@ int RandomBinaryTree<T>::iter_calc_height() {
 					s2.push(cur->right);	
 				}		
 			}
-			process_s1 = false;
 		}
 		else{
 			while( !s2.empty() ){
@@ -130,7 +128,6 @@ int RandomBinaryTree<T>::iter_calc_height() {
 					s1.push(cur->right);	
 				}		
 			}
-			process_s1 = true;
 		}
 	}
 	return height;
@@ -141,7 +138,7 @@ int RandomBinaryTree<T>::rec_calc_height(BSTNode<T> *node) {
 	if(node == nullptr){ return 0; }
 	int left = rec_calc_height(node->left);
 	int right = rec_calc_height(node->right);
-	if(left>right){ return 1 + left; }
+	if(left > right){ return 1 + left; }
 	else{ return 1 + right; }
 }
 #endif
