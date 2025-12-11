@@ -218,7 +218,7 @@ void BinarySearchTree<T>::vine_to_tree(int size) {
 	}						//przesuwamy w prawo (bitowo) aż znajdziemy pozycje najbardziej znaczącego bitu
 	size = (1<<i);			//zapisujemy 2^(|_lg(size+1)_|) do size
 	leaves -= size;			//odejmując od leaves size odejmujemy 2^(|_lg(size+1)_|) zatem pierwszy linijka komentarza wykonana
-	size--;					//teraz size ma być równy size - leaves czyli po podstawieniu za leaves wychodzi size = -1 + 2^(|_lg(size+1)_|)
+	size--;					//size ma być równy size - leaves czyli po podstawieniu za leaves wychodzi size = -1 + 2^(|_lg(size+1)_|)
 	compress(leaves);		//size jest obecnie równy 2^(|_lg(size+1)_|) zatem wystarczy odjąć 1 i druga linijka komentarza wykonana
 	while (size > 1) {
 		size = size/2;
