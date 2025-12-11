@@ -23,7 +23,7 @@ int main(){
 	tree.vine_to_tree(size);
 	tree.display();
 	std::cout << "drzewo po vine to tree" << std::endl << std::endl << std::endl;
-	for(int i=0;i<17;i++){
+	for(int i=0 ; i < 17 ; i++){
 		tree2.insert(16-i);
 	}
 	tree2.display();
