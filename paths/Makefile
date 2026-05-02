@@ -2,7 +2,7 @@ DIR = $(notdir $(CURDIR))
 MAINNAME = main
 EXE = $(MAINNAME).out
 MAINOBJ = $(MAINNAME).o
-HEADS = graph.h dijkstra.h edge.h iterator.h
+HEADS = graph.h basegraph.h dijkstra.h edge.h iterator.h
 CXX = g++
 LXX = $(CXX)
 CXXF = -Wall -Wno-sign-compare -std=c++11
