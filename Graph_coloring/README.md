@@ -79,3 +79,15 @@ Dla grafu z `V` wierzchołkami i `E` krawędziami:
 ## 8. Przykład użycia
 
 Program w [main.cpp](main.cpp) tworzy dwa przykładowe grafy losowe, koloruje je i wypisuje przypisane kolory dla każdego wierzchołka.
+
+## 9. Referencje
+
+- [Wikipedia - Kolorowanie grafu](https://pl.wikipedia.org/wiki/Kolorowanie_grafu)
+- [inf.ug.edu.pl - Kolorowanie wierzchołków](https://inf.ug.edu.pl/~hanna/grafy/14_kolorowanie.pdf)
+
+
+
+
+
+
+
