@@ -74,7 +74,7 @@ Dla grafu z `V` wierzchołkami i `E` krawędziami:
 
 - Algorytm jest zachłanny, więc nie gwarantuje minimalnej liczby kolorów.
 - Działa poprawnie dla grafu nieskierowanego, który jest używany w tym projekcie.
-- W praktyce daje dobre wyniki dla wielu grafów, zwłaszcza gdy wierzchołki o dużych stopniach są kolorowane wcześniej.
+- W praktyce daje dobre wyniki dla wielu grafów.
 
 ## 8. Przykład użycia
 
